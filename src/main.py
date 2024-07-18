@@ -25,7 +25,7 @@ def thunderbird():
     #template=render_template('thunderbird.xml', **config)
     template=render_template('thunderbird.xml', **acf_vars)
     response=make_response(template)
-    response.headers['Content-Type'] = 'application/xml'
+    response.headers['Content-Type'] = 'text/xml'
     return response
 
 
@@ -36,7 +36,8 @@ def outlook():
         return 'Invalid autodiscover XML.', 400
     email = email[1]
 
-    return render_template('outlook.xml', email=email, **config)
+    #return render_template('outlook.xml', email=email, **config)
+    return render_template('outlook.xml', email=email, **acf_vars)
 
 if __name__ == '__main__':
    # Stampa il dizionario per verificarne il contenuto

@@ -9,11 +9,11 @@
       <Action>settings</Action>
 
       <Protocol>
-        <Type>IMAP</Type>
-        <Server>{{ imap.domain }}</Server>
-        <Port>{{ imap.port }}</Port>
-        <SSL>{% if imap.encryption == 'SSL' %}on{% else %}off{% endif %}</SSL>
-        {% if imap.encryption == 'STARTTLS' %}
+        <Type>{{ ACF_INCOMING_TYPE }}</Type>
+        <Server>{{ ACF_INCOMING_SERVER }}</Server>
+        <Port>{{ ACF_INCOMING_PORT }}</Port>
+        <SSL>{% if ACF_INCOMING_ENC == 'SSL' %}on{% else %}off{% endif %}</SSL>
+        {% if ACF_INCOMING_ENC == 'STARTTLS' %}
           <Encryption>TLS</Encryption>
         {% endif %}
         <AuthRequired>on</AuthRequired>
@@ -22,11 +22,11 @@
       </Protocol>
 
       <Protocol>
-        <Type>SMTP</Type>
-        <Server>{{ smtp.domain }}</Server>
-        <Port>{{ smtp.port }}</Port>
-        <SSL>{% if smtp.encryption == 'SSL' %}on{% else %}off{% endif %}</SSL>
-        {% if smtp.encryption == 'STARTTLS' %}
+        <Type>{{ ACF_OUTGOING_TYPE }}</Type>
+        <Server>{{ ACF_OUTGOING_SERVER }}</Server>
+        <Port>{{ ACF_OUTGOING_PORT }}</Port>
+        <SSL>{% if ACF_OUTGOING_ENC == 'SSL' %}on{% else %}off{% endif %}</SSL>
+        {% if ACF_OUTGOING_ENC == 'STARTTLS' %}
           <Encryption>TLS</Encryption>
         {% endif %}
         <AuthRequired>on</AuthRequired>
