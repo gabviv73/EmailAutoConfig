@@ -5,9 +5,6 @@ RUN apt-get clean \
     && apt-get -y  dist-upgrade \
     && apt-get clean
 
-RUN apt -y install envsubst \
-    && apt -y clean
-
 WORKDIR /autoconfig
 COPY ./requirements.txt /autoconfig
 RUN python -m pip install --upgrade pip
@@ -17,7 +14,7 @@ COPY ./src .
 RUN chmod +x ./start.sh
 
 ENV ACF_DOMAIN=example.com
-ENV ACF_DESC=Example Corp
+ENV ACF_DESC="Example Corp"
 
 ENV ACF_INCOMING=enabled
 ENV ACF_INCOMING_TYPE=IMAP

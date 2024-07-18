@@ -1,25 +1,28 @@
 <?xml version="1.0"?>
-<clientConfig version="1.1">
-  <emailProvider id="{{ domain }}">
-    <domain>{{ domain }}</domain>
+<clientConfig version="1.2">
+    <emailProvider id="{{ ACF_DOMAIN }}">
+      <domain>{{ domain }}</domain>
 
-    <displayName>{{ description }}</displayName>
-    <displayShortName>{{ description }}</displayShortName>
 
-    <incomingServer type="imap">
-      <hostname>{{ imap.domain }}</hostname>
-      <port>{{ imap.port }}</port>
-      <socketType>{% if imap.encryption %}{{ imap.encryption }}{% else %}plain{% endif %}</socketType>
-      <username>%EMAILADDRESS%</username>
-      <authentication>password-cleartext</authentication>
+
+      <displayName>{{ ACF_DESC }}</displayName>
+      <displayShortName>{{ ACF_DESC }}</displayShortName>
+
+
+    <incomingServer type="{{ ACF_INCOMING_TYPE }}">
+      <hostname>{{ ACF_INCOMING_SERVER }}</hostname>
+      <port>{{ SCF_INCOMING_PORT }}</port>
+      <socketType>{% if ACF_INCOMING_ENC %}{{ ACF_INCOMING_ENC }}{% else %}plain{% endif %}</socketType>
+      <username>{{ ACF_INCOMING_UNAME }}</username>
+      <authentication>{{ACF_INCOMING_AUTH }}</authentication>
     </incomingServer>
 
-    <outgoingServer type="smtp">
-      <hostname>{{ smtp.domain }}</hostname>
-      <port>{{ smtp.port }}</port>
-      <socketType>{% if smtp.encryption %}{{ smtp.encryption }}{% else %}plain{% endif %}</socketType>
-      <username>%EMAILADDRESS%</username>
-      <authentication>password-cleartext</authentication>
+    <outgoingServer type="{{ ACF_OUTGOING_TYPE }}">
+      <hostname>{{ ACF_OUTGOING_SERVER }}</hostname>
+      <port>{{ ACF_OUTGOING_SERVER }}</port>
+      <socketType>{% if ACF_OUTGOING_ENC %}{{ ACF_OUTGOING_ENC }}{% else %}plain{% endif %}</socketType>
+      <username>{{ ACF_OUTGOING_UNAME }}</username>
+      <authentication>{{ ACF_OUTGOING_AUTH }}</authentication>
     </outgoingServer>
 
   </emailProvider>
