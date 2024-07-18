@@ -7,7 +7,8 @@ services:
     restart: unless-stopped
     ports:
       - 4243:5000
+    volumes:
+       - ./config:/autoconfig/config
     # ONLY for testing
-    #volumes:
     #  - ./src:/srv/flask_app
     #entrypoint: ["tail", "-f", "/dev/null"]
