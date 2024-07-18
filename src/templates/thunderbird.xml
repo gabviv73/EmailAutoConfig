@@ -11,6 +11,7 @@
           "pop3": POP3
           "jmap": JMAP
           -#}
+{% if ACF_INCOMING %}
       <incomingServer type="{{ ACF_INCOMING_TYPE }}">
         <hostname>{{ ACF_INCOMING_SERVER }}</hostname>
         <port>{{ SCF_INCOMING_PORT }}</port>
@@ -68,7 +69,8 @@
         <authentication>http-basic</authentication>
         <password>optional: the user's password</password>
       </incomingServer> -#}
-
+{% endif %}
+{% if ACF_OUTGOING %}
       <outgoingServer type="{{ ACF_OUTGOING_TYPE }}">
         <hostname>{{ ACF_OUTGOING_SERVER }}</hostname>
         <port>{{ ACF_OUTGOING_SERVER }}</port>
@@ -102,7 +104,7 @@
         {#-  <addThisServer>true</addThisServer> -#}
         {#-  <useGlobalPreferredServer>true</useGlobalPreferredServer> -#}
       </outgoingServer>
-
+{% endif %}
       {#-  A page where the ISP describes the configuration.
           This is purely informational and currently mainly for
           maintenance of the files and not used by the client at all.
@@ -119,7 +121,7 @@
       </documentation> -#}
 
     </emailProvider>
-
+{% if ACF_ADDBOOK %}
     {#-  Syncronize the user's address book / contacts. -#}
     <addressBook type="carddav">
       <username>{{ ACF_ADDBOOK_UNAME }}</username>
@@ -143,7 +145,8 @@
       <authentication>http-basic</authentication>
       <serverURL>https://jmap.example.com</serverURL>
     </addressBook> -#}
-
+{% endif %}
+{% if ACF_CAL %}
     {#-  Syncronize the user's calendar. -#}
     <calendar type="caldav">
       <username>{{ ACF_CAL_UNAME }}</username>
@@ -156,7 +159,7 @@
       <authentication>http-basic</authentication> -#} {#-  see <addressBook> -#}
 {#-   <serverURL>https://calendar.example.com</serverURL>
     </calendar> -#}
-
+{% endif %}
     {#-  Upload files, allowing the user to share them.
         This can be used for Thunderbird's FileLink feature,
         or to set up a file sync folder on the user's desktop. -#}
@@ -165,7 +168,7 @@
       <authentication>http-basic</authentication> -#} {#-  see <addressBook> -#}
 {#-   <serverURL>https://share.example.com/remote.php/dav</serverURL>
     </fileShare> -#}
-
+{% if ACF_WEB %}
     {#-  This allows to login in to the webmail service of the provider.
         The URLs are loaded into a standard webbrowser for the user.
         This is optional. -#}
@@ -207,7 +210,7 @@
         <loginButton id="submit_button" name="login"/>
       </loginPageInfo>
     </webMail>
-
+{% endif %}
     {#-  Ask user for custom input,
        and use them as placeholders in the values.
        Optional. -#}

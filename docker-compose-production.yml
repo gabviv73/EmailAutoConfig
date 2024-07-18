@@ -10,34 +10,34 @@ services:
     environment:
       - ACF_DOMAIN=example.com
       - ACF_DESC="Example Corp"
-      - ACF_INCOMING=enabled
+      - ACF_INCOMING=True
       - ACF_INCOMING_TYPE=IMAP
       - ACF_INCOMING_SERVER=imap.example.com
       - ACF_INCOMING_PORT=993
       - ACF_INCOMING_ENC=SSL
       - ACF_INCOMING_AUTH=password-cleartext
       - ACF_INCOMING_UNAME=%EMAILADDRESS%
-      - ACF_OUTGOING=enabled
+      - ACF_OUTGOING=True
       - ACF_OUTGOING_TYPE=SMTP
       - ACF_OUTGOING_SERVER=smtp.example.com
       - ACF_OUTGOING_PORT=587
       - ACF_OUTGOING_ENC=STARTTLS
       - ACF_OUTGOING_AUTH=password-cleartext
       - ACF_OUTGOING_UNAME=%EMAILADDRESS%
-      - ACF_ADDBOOK=enabled
+      - ACF_ADDBOOK=True
       - ACF_ADDBOOK_TYPE=carddav
       - ACF_ADDBOOK_URL=https://www.example.com/remote.php/dav
       - ACF_ADDBOOK_AUTH=http-basic
       - ACF_ADDBOOK_UNAME=%EMAILADDRESS%
-      - ACF_CAL=enabled
+      - ACF_CAL=True
       - ACF_CAL_TYPE=caldav
       - ACF_CAL_URL=https://www.example.com/remote.php/dav
       - ACF_CAL_AUTH=http-basic
       - ACF_CAL_UNAME=%EMAILADDRESS%
-      - ACF_WEB=enabled
+      - ACF_WEB=False
       - ACF_WEB_URL=https://webmail.example.com/
       - ACF_WEB_UNAME=%EMAILADDRESS%
       - ACF_WEB_UNAME_FIELD=user
       - ACF_WEB_PASS_FIELD=password
     volumes:
-       - ./config:/autoconfig/config
+      - ./config:/autoconfig/config
