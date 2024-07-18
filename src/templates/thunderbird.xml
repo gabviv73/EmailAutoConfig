@@ -14,7 +14,7 @@
 {% if ACF_INCOMING %}
       <incomingServer type="{{ ACF_INCOMING_TYPE }}">
         <hostname>{{ ACF_INCOMING_SERVER }}</hostname>
-        <port>{{ SCF_INCOMING_PORT }}</port>
+        <port>{{ ACF_INCOMING_PORT }}</port>
           {#-  "plain": no encryption
                 "SSL": SSL 3 or TLS 1 on SSL-specific port
                 "STARTTLS": on normal plain port and mandatory upgrade to TLS via STARTTLS
@@ -73,7 +73,7 @@
 {% if ACF_OUTGOING %}
       <outgoingServer type="{{ ACF_OUTGOING_TYPE }}">
         <hostname>{{ ACF_OUTGOING_SERVER }}</hostname>
-        <port>{{ ACF_OUTGOING_SERVER }}</port>
+        <port>{{ ACF_OUTGOING_PORT }}</port>
         <socketType>{{ ACF_OUTGOING_ENC }}</socketType> {#-  see <incomingServer> -#}
         <username>{{ ACF_OUTGOING_UNAME }}</username>{#-  if smtp-auth -#}
             {#-  smtp-auth (RFC 2554, 4954) or other auth mechanism.
