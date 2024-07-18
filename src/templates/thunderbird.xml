@@ -122,7 +122,7 @@
 
     <!-- Syncronize the user's address book / contacts. -->
     <addressBook type="carddav">
-      <username>%EMAILADDRESS%</username>
+      <username>{{ ACF_ADDBOOK_UNAME }}</username>
         <!-- Authentication methods. See also <incomingServer>.
               "http-basic":
                         Authenticate to the HTTP server using
@@ -134,37 +134,37 @@
                         mAuth. Uses the same token as for email. <scope> needs to include
                          addressbook/calendar.
               -->
-      <authentication>http-basic</authentication>
-      <serverURL>https://jmap.example.com/remote.php/dav</serverURL>
+      <authentication>{{ ACF_ADDBOOK_AUTH }}</authentication>
+      <serverURL>{{ ACF_ADDBOOK_URL }}</serverURL>
     </addressBook>
 
-    <addressBook type="jmap">
+<!--<addressBook type="jmap">
       <username>%EMAILADDRESS%</username>
       <authentication>http-basic</authentication>
       <serverURL>https://jmap.example.com</serverURL>
-    </addressBook>
+    </addressBook> -->
 
     <!-- Syncronize the user's calendar. -->
     <calendar type="caldav">
-      <username>%EMAILADDRESS%</username>
-      <authentication>http-basic</authentication> <!-- see <addressBook> -->
-      <serverURL>https://calendar.example.com/remote.php/dav</serverURL>
+      <username>{{ ACF_CAL_UNAME }}</username>
+      <authentication>{{ ACF_CAL_AUTH }}</authentication> <!-- see <addressBook> -->
+      <serverURL>{{ ACF_CAL_URL }}</serverURL>
     </calendar>
 
-    <calendar type="jmap">
+<!--<calendar type="jmap">
       <username>%EMAILADDRESS%</username>
-      <authentication>http-basic</authentication> <!-- see <addressBook> -->
-      <serverURL>https://calendar.example.com</serverURL>
-    </calendar>
+      <authentication>http-basic</authentication> --> <!-- see <addressBook> -->
+<!--  <serverURL>https://calendar.example.com</serverURL>
+    </calendar> -->
 
     <!-- Upload files, allowing the user to share them.
         This can be used for Thunderbird's FileLink feature,
         or to set up a file sync folder on the user's desktop. -->
-    <fileShare type="webdav">
+<!--<fileShare type="webdav">
       <username>%EMAILADDRESS%</username>
-      <authentication>http-basic</authentication> <!-- see <addressBook> -->
-      <serverURL>https://share.example.com/remote.php/dav</serverURL>
-    </fileShare>
+      <authentication>http-basic</authentication> --> <!-- see <addressBook> -->
+<!--  <serverURL>https://share.example.com/remote.php/dav</serverURL>
+    </fileShare> -->
 
     <!-- This allows to login in to the webmail service of the provider.
         The URLs are loaded into a standard webbrowser for the user.
@@ -173,7 +173,7 @@
       <!-- Webpage where the user has to log in manually by entering username
           and password himself.
           HTTPS required. -->
-      <loginPage url="https://mail.example.com/login/" />
+      <loginPage url="{{ ACF_WEB_URL }}" />
 
       <!-- Same as loginAutomaticDOM, but the website makes checks that
           the user comes from the login page. So, open the login page
@@ -182,11 +182,11 @@
           The login button might not be an HTML button, just a div, so
           to trigger it, send a click event to it.
           HTTPS is required for the URL. -->
-      <loginPageInfo url="https://mail.example.com/login/">
+      <loginPageInfo url="{{  ACF_WEB_URL }}">
         <!-- What to fill into the usernameField.
             Format is the same as for <username> within <incomingServer>,
             including placeholders. See below for valid placeholders. -->
-        <username>%EMAILADDRESS%</username>
+        <username>{{ ACF_WEB_UNAME }}</username>
         <!-- Allows to find the textfield on the page, to fill it out.
             The id attribute give the DOM ID,
             The name attribute give the DOM name attribute.
@@ -199,8 +199,8 @@
             If you use powerful functions like jQuery, and the XML returns
             you code in the username ID, and you feed it unchecked to jQuery,
             it may be executed. -->
-        <usernameField id="email_field" name="email" />
-        <passwordField name="password" />
+        <usernameField id="{{ ACF_WEB_UNAME_FIELD }}" name="{{ ACF_WEB_UNAME_FIELD }}" />
+        <passwordField name="{{ ACF_WEB_PASS_FIELD  }}" />
         <!-- The submit button to trigger the server submit
             after filling in the fields.
             id and name attributes: See <usernameField> -->
@@ -211,19 +211,19 @@
     <!-- Ask user for custom input,
        and use them as placeholders in the values.
        Optional. -->
-    <inputField key="USERNAME" label="Screen name"></inputField>
-    <inputField key="GRANDMA" label="Grandma">Elise Bauer</inputField>
+<!--<inputField key="USERNAME" label="Screen name"></inputField>
+    <inputField key="GRANDMA" label="Grandma">Elise Bauer</inputField> -->
 
     <!-- oAuth2 specced for mail apps,
         e.g. clientID, expiry, and login page -->
-    <mAuth>
+<!--<mAuth>
       <authURL>https://login.example.com/common/oauth2/v2.0/authorize</authURL>
       <tokenURL>https://login.example.com/common/oauth2/v2.0/token</tokenURL>
       <issuer>login.example.com</issuer>
       <scope>imap pop3 smtp webdav caldav carddav offline_access</scope>
       <clientID>messaging</clientID>
       <clientSecret>notreally</clientSecret>
-    </mAuth>
+    </mAuth> -->
 
     <!-- Add this only when users (who already have an account) have to
         do something manually before the account can work with IMAP/POP or SSL.
@@ -231,12 +231,12 @@
         & a m p ; (without spaces).
         Mandatory only if the ISP requires such settings
         before the configs above work. -->
-    <enable 
+<!--<enable 
       visiturl="https://mail.google.com/mail/?ui=2&amp;shva=1#settings/fwdandpop">
       <instruction>Check 'Enable IMAP and POP' in Google settings page</instruction>
       <instruction lang="de">Schalten Sie 'IMAP und POP aktivieren' auf der Google Einstellungs-Seite an</instruction>
     </enable>
 
     <clientConfigUpdate url="https://www.example.com/config/mail.xml" />
-
+-->
 </clientConfig>
