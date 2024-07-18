@@ -19,6 +19,7 @@ Tested with Thunderbird 115 for IMAP and SMTP only.
 * Start container
   
         docker compose up
+* Test the generated XML at https://autoconfig.example.com/mail/config-v1.1.xml?emailaddress=name.surname@example.com
 * Configure yout email client with an account at name.surname@example.com
 * It shold work ...
 
