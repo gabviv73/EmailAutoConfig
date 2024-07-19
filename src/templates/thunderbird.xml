@@ -11,7 +11,7 @@
           "pop3": POP3
           "jmap": JMAP
           -#}
-{% if ACF_INCOMING %}
+{% if ACF_INCOMING == 'enabled' %}
       <incomingServer type="{{ ACF_INCOMING_TYPE }}">
         <hostname>{{ ACF_INCOMING_SERVER }}</hostname>
         <port>{{ ACF_INCOMING_PORT }}</port>
@@ -70,7 +70,7 @@
         <password>optional: the user's password</password>
       </incomingServer> -#}
 {% endif %}
-{% if ACF_OUTGOING %}
+{% if ACF_OUTGOING == 'enabled' %}
       <outgoingServer type="{{ ACF_OUTGOING_TYPE }}">
         <hostname>{{ ACF_OUTGOING_SERVER }}</hostname>
         <port>{{ ACF_OUTGOING_PORT }}</port>
@@ -121,7 +121,7 @@
       </documentation> -#}
 
     </emailProvider>
-{% if ACF_ADDBOOK %}
+{% if ACF_ADDBOOK == 'enabled' %}
     {#-  Syncronize the user's address book / contacts. -#}
     <addressBook type="carddav">
       <username>{{ ACF_ADDBOOK_UNAME }}</username>
@@ -146,7 +146,7 @@
       <serverURL>https://jmap.example.com</serverURL>
     </addressBook> -#}
 {% endif %}
-{% if ACF_CAL %}
+{% if ACF_CAL == 'enabled' %}
     {#-  Syncronize the user's calendar. -#}
     <calendar type="caldav">
       <username>{{ ACF_CAL_UNAME }}</username>
@@ -168,7 +168,7 @@
       <authentication>http-basic</authentication> -#} {#-  see <addressBook> -#}
 {#-   <serverURL>https://share.example.com/remote.php/dav</serverURL>
     </fileShare> -#}
-{% if ACF_WEB %}
+{% if ACF_WEB == 'enabled' %}
     {#-  This allows to login in to the webmail service of the provider.
         The URLs are loaded into a standard webbrowser for the user.
         This is optional. -#}
