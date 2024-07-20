@@ -41,7 +41,7 @@ cURL -ki --basic -u USERNAME:PASSWORD \
 
 You should get your template xml back filled in with your data.
 
-# Reference
-# https://docs.directadmin.com/other-hosting-services/email/autodiscover.html
+# References
+* https://docs.directadmin.com/other-hosting-services/email/autodiscover.html
 * https://www.zoho.com/mail/help/adminconsole/autodiscovery-settings.html
 * https://portal.smartertools.com/community/a94258/why-no-access-to-autodiscover_xml.aspx
